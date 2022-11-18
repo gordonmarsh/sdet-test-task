@@ -21,4 +21,7 @@ Test coverage:
    In the tests where a value is not present, this does not include where the field is absent altogether. These tests should be added.
    Many other tests exist in terms of the data that is fed into post and get calls that I have not added here due to time constraints (e.g. giving a negative number to the get, does it fail gracefully)
 
-
+Service improvements:
+   More informative error messages for the user
+   More defensive error handling
+   API documentation
