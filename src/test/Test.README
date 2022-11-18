@@ -1,0 +1,24 @@
+Overview:
+   The test suite relies on a new project created in Cucumber to support BDD style tests
+   Assertions are currently done using Junit
+
+To execute the tests:
+   Start the service using "gradle run"
+   Start the tests using "gradle cucumberCli"
+
+Docker-compose issues:
+   Unfortunately the Docker-compose files do not work and I was unable to complete these in the time given.
+
+Suggested improvements to test suite
+
+Technical:
+   Use of id by default is one - this should be refactored as sometimes we're not interested in setting it and want to leave it blank to get the incremented value that the system produces.
+   Some data considerations - an assumption is made that id 1000 is unknown for instance
+   Refactor test code to reduce duplication such as repeated use of new CollateralData
+   These tests would not work concurrently, we need to refactor for parallelisation
+
+Test coverage:
+   In the tests where a value is not present, this does not include where the field is absent altogether. These tests should be added.
+   Many other tests exist in terms of the data that is fed into post and get calls that I have not added here due to time constraints (e.g. giving a negative number to the get, does it fail gracefully)
+
+

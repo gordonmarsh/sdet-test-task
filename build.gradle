@@ -13,6 +13,11 @@ repositories {
 }
 
 dependencies {
+    testImplementation 'io.cucumber:cucumber-java:7.8.1'
+    testImplementation 'io.cucumber:cucumber-junit:6.10.4'
+    testImplementation 'io.rest-assured:rest-assured:5.2.0'
+    testImplementation 'com.fasterxml.jackson.core:jackson-core:2.13.4'
+
     compile 'org.projectlombok:lombok:1.18.10'
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
 
@@ -24,4 +29,26 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task cucumberCli() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--plugin', 'pretty',
+                    '--plugin', 'html:target/cucumber-report.html',
+                    '--tags', 'not @ignore',
+                    '--glue', 'co.copper.cucumber',
+                    'src/test/resources']
+        }
+    }
 }

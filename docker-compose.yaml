@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  collateralsservice:
+    build: ./
+    networks:
+      - my-network
+    volumes:
+      - type: volume
+        source: collateralvolume
+        target: /data
+volumes:
+  collateralvolume:
+networks:
+  my-network: {}
