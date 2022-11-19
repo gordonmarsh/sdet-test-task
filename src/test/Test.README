@@ -1,13 +1,16 @@
 Overview:
    The test suite relies on a new project created in Cucumber to support BDD style tests
    Assertions are currently done using Junit
+   Development was completed using IntelliJ 2022.2.3
 
 To execute the tests:
-   Start the service using "gradle run"
-   Start the tests using "gradle cucumberCli"
-
-Docker-compose issues:
-   Unfortunately the Docker-compose files do not work and I was unable to complete these in the time given.
+   On the command line:
+      Start the service using "gradle run"
+      Set an environment variable named "APP_HOST" to "localhost"
+      Start the tests using "gradle cucumberCli"
+   Using Docker:
+      Call "docker-compose up"
+      Once the tests have finished, you can call "docker-compose down" if required to clean up the Docker containers
 
 Suggested improvements to test suite
 

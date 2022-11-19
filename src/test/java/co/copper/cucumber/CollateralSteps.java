@@ -14,7 +14,13 @@ public class CollateralSteps {
 
     Response currentResponse;
     ObjectMapper Obj = new ObjectMapper();
-    ApiCall apiCall = new ApiCall("http://localhost");
+    ApiCall apiCall;
+
+    public CollateralSteps() {
+        String appHost = System.getenv("APP_HOST");
+        System.out.println("Apphost found was: " + appHost);
+        apiCall = new ApiCall("http://" + appHost);
+    }
 
     @Given("the Collaterals service is running")
     public void theCollateralsServiceIsRunning() {
